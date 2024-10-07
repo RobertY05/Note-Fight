@@ -1,0 +1,50 @@
+[gd_scene load_steps=18 format=3 uid="uid://dxhnhmtxpvpdn"]
+
+[ext_resource type="PackedScene" uid="uid://cnc130s2fqjwn" path="res://game.tscn" id="1_6tfqs"]
+[ext_resource type="Script" path="res://main.gd" id="1_mnnax"]
+[ext_resource type="PackedScene" uid="uid://hm160v7tjv8a" path="res://unit_related/rivals/rival_square.tscn" id="2_h703u"]
+[ext_resource type="PackedScene" uid="uid://buohboruobld0" path="res://hud/main_menu.tscn" id="2_qyqqi"]
+[ext_resource type="PackedScene" uid="uid://c180rv0wnlkdv" path="res://unit_related/summons/square.tscn" id="3_namta"]
+[ext_resource type="PackedScene" uid="uid://clfesmdpshblx" path="res://unit_related/summons/triangle.tscn" id="4_65bry"]
+[ext_resource type="PackedScene" uid="uid://bmkm4ohigwbdw" path="res://unit_related/rivals/rival_pentagon.tscn" id="4_v16me"]
+[ext_resource type="PackedScene" uid="uid://bqqc41yyt2jj1" path="res://unit_related/rivals/rival_hexagon.tscn" id="5_2rf1u"]
+[ext_resource type="PackedScene" uid="uid://bu82q5a37ffp2" path="res://level_related/level_square.tscn" id="5_jynn2"]
+[ext_resource type="PackedScene" uid="uid://ij4fak35uwn5" path="res://unit_related/summons/pentagon.tscn" id="6_a2dsr"]
+[ext_resource type="PackedScene" uid="uid://dbi8xargdtmvj" path="res://unit_related/rivals/rival_octagon.tscn" id="6_ku7v0"]
+[ext_resource type="PackedScene" uid="uid://caws5ao5ecnsg" path="res://unit_related/summons/hexagon.tscn" id="7_e6lkt"]
+[ext_resource type="PackedScene" uid="uid://btdei7fdpwar0" path="res://unit_related/summons/octagon.tscn" id="10_iukub"]
+[ext_resource type="PackedScene" uid="uid://c8r4ixfj82734" path="res://level_related/level_pentagon.tscn" id="13_8jxs8"]
+[ext_resource type="PackedScene" uid="uid://1sijgxl8kwv" path="res://level_related/level_hexagon.tscn" id="14_i5obf"]
+[ext_resource type="PackedScene" uid="uid://d13kwque4xsfy" path="res://level_related/level_octagon.tscn" id="15_ieo4v"]
+[ext_resource type="Texture2D" uid="uid://20daubty6xyy" path="res://textures/hud/white.png" id="17_3ye2m"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_mnnax")
+game_template = ExtResource("1_6tfqs")
+square_rival = ExtResource("2_h703u")
+pentagon_rival = ExtResource("4_v16me")
+hexagon_rival = ExtResource("5_2rf1u")
+octagon_rival = ExtResource("6_ku7v0")
+square_summon = ExtResource("3_namta")
+triangle_summon = ExtResource("4_65bry")
+pentagon_summon = ExtResource("6_a2dsr")
+hexagon_summon = ExtResource("7_e6lkt")
+octagon_summon = ExtResource("10_iukub")
+level_square = ExtResource("5_jynn2")
+level_pentagon = ExtResource("13_8jxs8")
+level_hexagon = ExtResource("14_i5obf")
+level_octagon = ExtResource("15_ieo4v")
+
+[node name="White" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(640, 360)
+scale = Vector2(30, 20)
+texture = ExtResource("17_3ye2m")
+
+[node name="MainMenu" parent="." instance=ExtResource("2_qyqqi")]
+
+[node name="DelayedFreeTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="DelayedFreeTimer" to="." method="_on_delayed_free_timer_timeout"]

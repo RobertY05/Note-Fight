@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://cbapglj2oj1m7"]
+
+[ext_resource type="Script" path="res://hud/hud.gd" id="1_lxrsu"]
+[ext_resource type="PackedScene" uid="uid://cuq4xdd3xji8d" path="res://hud/ink_meter.tscn" id="1_vlqmr"]
+[ext_resource type="PackedScene" uid="uid://batwmrph4qbyv" path="res://hud/card.tscn" id="3_68cwu"]
+[ext_resource type="PackedScene" uid="uid://bktyc3kdcrmn8" path="res://hud/Message.tscn" id="4_j1ww0"]
+[ext_resource type="Texture2D" uid="uid://dmm13fop3kuu5" path="res://textures/placeholder/Placeholder_win_message.png" id="5_steyf"]
+[ext_resource type="Texture2D" uid="uid://bj1hunri4choi" path="res://textures/placeholder/Placeholder_lose_message.png" id="6_5c6et"]
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchor_right = 0.156
+anchor_bottom = 0.349
+offset_right = 1.31999
+offset_bottom = 0.720001
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_lxrsu")
+
+[node name="Card1" parent="." instance=ExtResource("3_68cwu")]
+
+[node name="Card2" parent="." instance=ExtResource("3_68cwu")]
+position = Vector2(0, 63)
+
+[node name="Card3" parent="." instance=ExtResource("3_68cwu")]
+position = Vector2(0, 126)
+
+[node name="Card4" parent="." instance=ExtResource("3_68cwu")]
+position = Vector2(0, 189)
+
+[node name="InkMeter" parent="." instance=ExtResource("1_vlqmr")]
+layout_mode = 1
+anchor_left = 0.08
+anchor_top = 0.016
+anchor_right = 0.149
+anchor_bottom = 0.979
+offset_left = -3.28
+offset_top = -0.672
+offset_right = -3.149
+offset_bottom = 19.652
+
+[node name="WinMessage" parent="." instance=ExtResource("4_j1ww0")]
+position = Vector2(640, -100)
+texture = ExtResource("5_steyf")
+
+[node name="LoseMessage" parent="." instance=ExtResource("4_j1ww0")]
+position = Vector2(640, -100)
+texture = ExtResource("6_5c6et")

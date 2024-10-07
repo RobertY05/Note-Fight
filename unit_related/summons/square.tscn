@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://c180rv0wnlkdv"]
+
+[ext_resource type="PackedScene" uid="uid://cqnnl31sprg0h" path="res://unit_related/summons/shape.tscn" id="1_xtlpv"]
+[ext_resource type="Script" path="res://unit_related/summons/square.gd" id="2_esh1k"]
+[ext_resource type="Texture2D" uid="uid://dtkdhtcv0ev55" path="res://textures/summons/summon_square_dead.png" id="2_hr58f"]
+[ext_resource type="Texture2D" uid="uid://bltkbg5j4oeip" path="res://textures/summons/summon_square.png" id="3_yifp3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mv7ml"]
+radius = 9.0
+
+[node name="Shape" instance=ExtResource("1_xtlpv")]
+script = ExtResource("2_esh1k")
+STRAIGHTEN_SPEED = 0.1
+ATTACK_SKEW = 0.5
+DEAD_SPRITE = ExtResource("2_hr58f")
+SPEED = 50
+MAX_HEALTH = 10
+FIRE_RATE = 1.0
+RANGE = 5
+DAMAGE = 2
+COST = 2
+KNOCKBACK = 250.0
+KNOCKBACK_MULTIPLIER = 1.0
+
+[node name="Sprite2D" parent="." index="1"]
+scale = Vector2(0.29, 0.3)
+texture = ExtResource("3_yifp3")
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CircleShape2D_mv7ml")
+
+[connection signal="just_attacked" from="." to="." method="_on_just_attacked"]

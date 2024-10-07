@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://ij4fak35uwn5"]
+
+[ext_resource type="PackedScene" uid="uid://cqnnl31sprg0h" path="res://unit_related/summons/shape.tscn" id="1_i7vmb"]
+[ext_resource type="Script" path="res://unit_related/summons/pentagon.gd" id="2_a8nmy"]
+[ext_resource type="Texture2D" uid="uid://dahdki6eo60db" path="res://textures/summons/summon_pentagon_dead.png" id="2_gdk3q"]
+[ext_resource type="Texture2D" uid="uid://diu5f2s2hqg6" path="res://textures/summons/summon_pentagon.png" id="3_i6mwc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mu4kn"]
+radius = 13.0
+
+[node name="Shape" instance=ExtResource("1_i7vmb")]
+script = ExtResource("2_a8nmy")
+SHRINK_SPEED = 0.1
+ATTACK_SCALE = 0.3
+DEAD_SPRITE = ExtResource("2_gdk3q")
+SPEED = 20
+MAX_HEALTH = 20
+FIRE_RATE = 6.0
+RANGE = 10
+DAMAGE = 10
+COST = 5
+KNOCKBACK = 750.0
+KNOCKBACK_MULTIPLIER = 0.1
+
+[node name="Sprite2D" parent="." index="1"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_i6mwc")
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CircleShape2D_mu4kn")

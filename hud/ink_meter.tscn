@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://cuq4xdd3xji8d"]
+
+[ext_resource type="Script" path="res://hud/ink_meter.gd" id="1_tqp1d"]
+[ext_resource type="Texture2D" uid="uid://q0g1hes2ryrq" path="res://textures/hud/gray.png" id="2_lj5j2"]
+[ext_resource type="Texture2D" uid="uid://txvfooii4qn4" path="res://textures/hud/black.png" id="3_25bpy"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ymrwq"]
+texture = ExtResource("2_lj5j2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qnbdv"]
+texture = ExtResource("3_25bpy")
+
+[node name="InkMeter" type="Control"]
+layout_mode = 3
+anchor_right = 0.039
+anchor_bottom = 0.208
+offset_right = 0.079998
+offset_bottom = 0.23999
+script = ExtResource("1_tqp1d")
+
+[node name="Bar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35
+anchor_right = 0.65
+anchor_bottom = 1.0
+offset_left = -0.5
+offset_right = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxTexture_ymrwq")
+theme_override_styles/fill = SubResource("StyleBoxTexture_qnbdv")
+fill_mode = 3
+show_percentage = false
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -3.0
+offset_right = 8.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 2

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ef0bptc5n22t"]
+
+[ext_resource type="Script" path="res://hud/summon_effect.gd" id="1_nbaqj"]
+
+[node name="SummonEffect" type="Line2D"]
+scale = Vector2(2.38272, 0.904899)
+points = PackedVector2Array(0, 0, 0, 20)
+width = 30.0
+texture_mode = 1
+end_cap_mode = 2
+script = ExtResource("1_nbaqj")

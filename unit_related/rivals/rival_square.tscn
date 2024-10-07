@@ -1,0 +1,16 @@
+[gd_scene load_steps=6 format=3 uid="uid://hm160v7tjv8a"]
+
+[ext_resource type="PackedScene" uid="uid://w8pyfdg0s0gq" path="res://unit_related/rivals/rival_template.tscn" id="1_jxcbu"]
+[ext_resource type="Script" path="res://unit_related/rivals/rival_square.gd" id="2_a8tdb"]
+[ext_resource type="PackedScene" uid="uid://c180rv0wnlkdv" path="res://unit_related/summons/square.tscn" id="3_p8ajb"]
+[ext_resource type="Texture2D" uid="uid://fyp1dv7o6fes" path="res://textures/rivals/rival_square_dead.png" id="4_lry4a"]
+[ext_resource type="Texture2D" uid="uid://bmtr01ldni23h" path="res://textures/rivals/rival_square.png" id="5_gfwfd"]
+
+[node name="RivalTemplate" instance=ExtResource("1_jxcbu")]
+script = ExtResource("2_a8tdb")
+_square = ExtResource("3_p8ajb")
+TEAM_COLOR = Color(1, 0, 0.847059, 1)
+DEAD_SPRITE = ExtResource("4_lry4a")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("5_gfwfd")

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://buohboruobld0"]
+
+[ext_resource type="Script" path="res://hud/main_menu.gd" id="1_lhwy3"]
+[ext_resource type="Texture2D" uid="uid://blyysdq2dwfkm" path="res://textures/map_art/main_menu.png" id="1_pfyhi"]
+
+[node name="MainMenu" type="Sprite2D"]
+texture = ExtResource("1_pfyhi")
+centered = false
+script = ExtResource("1_lhwy3")

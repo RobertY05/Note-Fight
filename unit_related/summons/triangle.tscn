@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://clfesmdpshblx"]
+
+[ext_resource type="PackedScene" uid="uid://cqnnl31sprg0h" path="res://unit_related/summons/shape.tscn" id="1_45tlx"]
+[ext_resource type="Script" path="res://unit_related/summons/triangle.gd" id="2_i5crs"]
+[ext_resource type="Texture2D" uid="uid://fru1c78heagw" path="res://textures/summons/summon_triangle.png" id="2_j4nma"]
+[ext_resource type="Texture2D" uid="uid://cvg3y1l5bix5n" path="res://textures/summons/summon_triangle_dead.png" id="2_sy2p4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uxpki"]
+radius = 7.0
+
+[node name="Shape" instance=ExtResource("1_45tlx")]
+wall_min_slide_angle = 1.74533
+script = ExtResource("2_i5crs")
+BULLET_TRAIL_FADE_SPEED = 0.2
+ROTATION_SPEED = 0.1
+TIP_MARGIN = 7
+DEAD_SPRITE = ExtResource("2_sy2p4")
+SPEED = 40
+MAX_HEALTH = 3
+FIRE_RATE = 3.0
+RANGE = 120
+DAMAGE = 2
+COST = 3
+KNOCKBACK = 500.0
+KNOCKBACK_MULTIPLIER = 1.2
+
+[node name="Sprite2D" parent="." index="1"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_j4nma")
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CircleShape2D_uxpki")
+
+[node name="BulletTrail" type="Line2D" parent="." index="8"]
+points = PackedVector2Array(0, 0, 0, 0)
+width = 2.0
+
+[node name="ReturnTimer" type="Timer" parent="." index="9"]
+one_shot = true
+
+[connection signal="just_attacked" from="." to="." method="_on_just_attacked"]
+[connection signal="timeout" from="ReturnTimer" to="." method="_on_return_timer_timeout"]

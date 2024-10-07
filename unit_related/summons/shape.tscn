@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqnnl31sprg0h"]
+
+[ext_resource type="Script" path="res://unit_related/summons/shape.gd" id="1_dig4y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wx162"]
+radius = 120.0
+
+[node name="Shape" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 11
+motion_mode = 1
+wall_min_slide_angle = 3.14159
+script = ExtResource("1_dig4y")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 8
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="AggroRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroRange"]
+shape = SubResource("CircleShape2D_wx162")
+
+[node name="FireRateTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="NavigationTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="DeathTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="AggroRange" to="." method="_on_aggro_range_body_entered"]
+[connection signal="body_exited" from="AggroRange" to="." method="_on_aggro_range_body_exited"]
+[connection signal="timeout" from="NavigationTimer" to="." method="_on_navigation_timer_timeout"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

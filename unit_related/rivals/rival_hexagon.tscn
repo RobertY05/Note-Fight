@@ -1,0 +1,22 @@
+[gd_scene load_steps=9 format=3 uid="uid://bqqc41yyt2jj1"]
+
+[ext_resource type="PackedScene" uid="uid://w8pyfdg0s0gq" path="res://unit_related/rivals/rival_template.tscn" id="1_3wh7n"]
+[ext_resource type="Script" path="res://unit_related/rivals/rival_hexagon.gd" id="2_mhib0"]
+[ext_resource type="PackedScene" uid="uid://c180rv0wnlkdv" path="res://unit_related/summons/square.tscn" id="3_1iv5w"]
+[ext_resource type="PackedScene" uid="uid://caws5ao5ecnsg" path="res://unit_related/summons/hexagon.tscn" id="3_vi1s8"]
+[ext_resource type="Texture2D" uid="uid://bvb6880n0igqs" path="res://textures/rivals/rival_hexagon_dead.png" id="4_3gaiy"]
+[ext_resource type="PackedScene" uid="uid://clfesmdpshblx" path="res://unit_related/summons/triangle.tscn" id="4_830nw"]
+[ext_resource type="PackedScene" uid="uid://ij4fak35uwn5" path="res://unit_related/summons/pentagon.tscn" id="5_5fybw"]
+[ext_resource type="Texture2D" uid="uid://ct0561ixulge8" path="res://textures/rivals/rival_hexagon.png" id="5_seo2u"]
+
+[node name="RivalTemplate" instance=ExtResource("1_3wh7n")]
+script = ExtResource("2_mhib0")
+_square = ExtResource("3_1iv5w")
+_triangle = ExtResource("4_830nw")
+_pentagon = ExtResource("5_5fybw")
+_hexagon = ExtResource("3_vi1s8")
+TEAM_COLOR = Color(0, 0.85771, 0, 1)
+DEAD_SPRITE = ExtResource("4_3gaiy")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("5_seo2u")

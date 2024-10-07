@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqnnl31sprg0h"]
+
+[ext_resource type="Script" path="res://unit_related/shape.gd" id="1_mywnm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wx162"]
+radius = 120.0
+
+[node name="Shape" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_mywnm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="AggroRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroRange"]
+shape = SubResource("CircleShape2D_wx162")
+
+[node name="FireRateTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="NavigationTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="body_entered" from="AggroRange" to="." method="_on_aggro_range_body_entered"]
+[connection signal="body_exited" from="AggroRange" to="." method="_on_aggro_range_body_exited"]
+[connection signal="timeout" from="NavigationTimer" to="." method="_on_navigation_timer_timeout"]

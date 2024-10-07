@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnc130s2fqjwn"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_v2vsc"]
+[ext_resource type="PackedScene" uid="uid://c5xwo7mn2ppn8" path="res://unit_related/player/player.tscn" id="2_7oybt"]
+[ext_resource type="PackedScene" uid="uid://bu82q5a37ffp2" path="res://level_related/test_level.tscn" id="3_qhp81"]
+[ext_resource type="PackedScene" uid="uid://cuq4xdd3xji8d" path="res://hud/ink_meter.tscn" id="4_kxjkg"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_v2vsc")
+
+[node name="Player" parent="." instance=ExtResource("2_7oybt")]
+position = Vector2(58, 344)
+
+[node name="TestLevel" parent="." instance=ExtResource("3_qhp81")]
+
+[node name="InkTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="InkMeter" parent="." instance=ExtResource("4_kxjkg")]
+
+[connection signal="timeout" from="InkTimer" to="." method="_on_ink_timer_timeout"]

@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8r4ixfj82734"]
+
+[ext_resource type="Texture2D" uid="uid://1ahvqd08jrkm" path="res://textures/map_art/level_pentagon.png" id="1_aojc1"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_j626w"]
+vertices = PackedVector2Array(1305.75, 24, 1305.75, -33.3203, 1361.97, -33.8203, 1361.02, 756.039, 1310.25, 697.75, -70.0391, -21.1719, -26.75, -21.5469, -26.75, 24, -71.9531, 758.953, -22.25, 758.852, -22.25, 697.75, 496, 24, 496, 127.977, 497.18, 697.75, 498.078, 589.383, 1310.25, 756.141, 762, 589.891, 761.031, 511.938, 759.969, 195.992, 765, 127.539, 762, 697.75, 731.602, 543, 726.531, 559.039, 532.328, 543, 536.977, 557.961, 765, 24, 731.078, 155, 729.563, 168.961, 526.398, 155, 524.883, 170.047, 500, 513.906, 500, 198.492)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8), PackedInt32Array(9, 8, 7, 10), PackedInt32Array(10, 7, 11, 12), PackedInt32Array(13, 10, 12, 14), PackedInt32Array(3, 15, 4), PackedInt32Array(0, 4, 16, 17, 18, 19), PackedInt32Array(4, 20, 16), PackedInt32Array(21, 17, 16, 22), PackedInt32Array(23, 21, 22, 24), PackedInt32Array(19, 25, 0), PackedInt32Array(26, 19, 18, 27), PackedInt32Array(28, 26, 27, 29), PackedInt32Array(23, 24, 14, 30), PackedInt32Array(30, 14, 12, 31), PackedInt32Array(29, 31, 12, 28)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-90, -41, -92, 779, 1381, 776, 1382, -54)])
+agent_radius = 20.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j4qjk"]
+size = Vector2(1292.5, 26.5)
+
+[node name="LevelPentagon" type="Node2D"]
+z_index = -1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("1_aojc1")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_j626w")
+
+[node name="TopBorder" type="StaticBody2D" parent="NavigationRegion2D"]
+position = Vector2(530, 262)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/TopBorder"]
+position = Vector2(109.5, -271.25)
+shape = SubResource("RectangleShape2D_j4qjk")
+
+[node name="BottomBorder" type="StaticBody2D" parent="NavigationRegion2D"]
+position = Vector2(530, 262)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/BottomBorder"]
+position = Vector2(114, 469)
+shape = SubResource("RectangleShape2D_j4qjk")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D"]
+position = Vector2(416, 171)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NavigationRegion2D/StaticBody2D"]
+polygon = PackedVector2Array(100, -171, 100, -52, 118, -36, 308, -36, 329, -53, 329, -171)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="NavigationRegion2D"]
+position = Vector2(482, 98)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NavigationRegion2D/StaticBody2D2"]
+polygon = PackedVector2Array(52, 92, 240, 91, 258, 107, 259, 406, 241, 425, 58, 425, 38, 407, 38, 108)
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="NavigationRegion2D"]
+position = Vector2(519, 84)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NavigationRegion2D/StaticBody2D3"]
+polygon = PackedVector2Array(25, 494, 200, 495, 223, 515, 223, 636, -2, 636, -1, 515)

@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://c5xwo7mn2ppn8"]
+
+[ext_resource type="Script" path="res://unit_related/rivals/player.gd" id="1_qwkek"]
+[ext_resource type="Texture2D" uid="uid://mnibecds17th" path="res://textures/rivals/rival_player_dead.png" id="2_p7rth"]
+[ext_resource type="Texture2D" uid="uid://b8xas2p7l021x" path="res://textures/rivals/rival_player.png" id="3_jcopi"]
+[ext_resource type="Texture2D" uid="uid://dqdo8rej8yr84" path="res://textures/hud/hud_summon_marker.png" id="4_g25oq"]
+[ext_resource type="PackedScene" uid="uid://ef0bptc5n22t" path="res://hud/summon_effect.tscn" id="5_k42jj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mb8lj"]
+radius = 34.0
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 0
+script = ExtResource("1_qwkek")
+TEAM_COLOR = Color(0.0901961, 0.486275, 1, 1)
+DEAD_SPRITE = ExtResource("2_p7rth")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_jcopi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mb8lj")
+
+[node name="SummonMarker" type="Sprite2D" parent="."]
+position = Vector2(78, 0)
+scale = Vector2(0.232143, 0.22)
+texture = ExtResource("4_g25oq")
+
+[node name="Summons" type="Node2D" parent="."]
+
+[node name="SummonEffect" parent="." instance=ExtResource("5_k42jj")]
+
+[node name="JiggleTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="timeout" from="JiggleTimer" to="." method="_on_jiggle_timer_timeout"]

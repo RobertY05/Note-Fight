@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://bu82q5a37ffp2"]
+
+[ext_resource type="Texture2D" uid="uid://yqgnpktwopu1" path="res://textures/map_art/level_square.png" id="1_ky22e"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_j626w"]
+vertices = PackedVector2Array(1305.75, 24, 1305.75, -33.3203, 1361.97, -33.8203, 1361.02, 756.039, 1310.25, 697.75, -70.0391, -21.1719, -26.75, -21.5469, -26.75, 24, -71.9531, 758.953, -22.25, 758.852, -22.25, 697.75, 1310.25, 756.141)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8), PackedInt32Array(9, 8, 7, 10), PackedInt32Array(10, 7, 0, 4), PackedInt32Array(4, 3, 11)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-90, -41, -92, 779, 1381, 776, 1382, -54)])
+agent_radius = 20.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3hih"]
+size = Vector2(1292.5, 26.5)
+
+[node name="TestLevel" type="Node2D"]
+z_index = -1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("1_ky22e")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_j626w")
+
+[node name="TopBorder" type="StaticBody2D" parent="NavigationRegion2D"]
+position = Vector2(530, 262)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/TopBorder"]
+position = Vector2(109.5, -271.25)
+shape = SubResource("RectangleShape2D_i3hih")
+
+[node name="BottomBorder" type="StaticBody2D" parent="NavigationRegion2D"]
+position = Vector2(530, 262)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/BottomBorder"]
+position = Vector2(114, 469)
+shape = SubResource("RectangleShape2D_i3hih")

@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://cnc130s2fqjwn"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_v2vsc"]
+[ext_resource type="PackedScene" uid="uid://c5xwo7mn2ppn8" path="res://unit_related/player/player.tscn" id="2_7oybt"]
+[ext_resource type="PackedScene" uid="uid://clfesmdpshblx" path="res://unit_related/summons/triangle.tscn" id="2_30exj"]
+[ext_resource type="PackedScene" uid="uid://c180rv0wnlkdv" path="res://unit_related/summons/square.tscn" id="2_pfs7d"]
+[ext_resource type="PackedScene" uid="uid://bu82q5a37ffp2" path="res://level_related/test_level.tscn" id="3_qhp81"]
+[ext_resource type="PackedScene" uid="uid://hm160v7tjv8a" path="res://unit_related/rivals/rival_square.tscn" id="4_r15en"]
+[ext_resource type="PackedScene" uid="uid://cbapglj2oj1m7" path="res://hud/hud.tscn" id="5_goe03"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6yvb0"]
+size = Vector2(1359, 785)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_v2vsc")
+square = ExtResource("2_pfs7d")
+triangle = ExtResource("2_30exj")
+rival_placeholder = ExtResource("4_r15en")
+player_max_ink = 15
+player_ink_rate = 0.1
+ai_max_ink = 15
+ai_ink_rate = 0.1
+
+[node name="Player" parent="." instance=ExtResource("2_7oybt")]
+position = Vector2(100, 360)
+
+[node name="TestLevel" parent="." instance=ExtResource("3_qhp81")]
+
+[node name="InkTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="Hud" parent="." instance=ExtResource("5_goe03")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 200.0
+offset_bottom = 252.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="AISummonDetector" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AISummonDetector"]
+position = Vector2(641, 361)
+shape = SubResource("RectangleShape2D_6yvb0")
+
+[connection signal="timeout" from="InkTimer" to="." method="_on_ink_timer_timeout"]

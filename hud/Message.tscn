@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bktyc3kdcrmn8"]
+
+[ext_resource type="Script" path="res://hud/message.gd" id="1_rdu6t"]
+
+[node name="Message" type="Sprite2D"]
+visible = false
+z_index = 1
+script = ExtResource("1_rdu6t")
